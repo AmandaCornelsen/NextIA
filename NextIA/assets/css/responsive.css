@@ -1,87 +1,122 @@
-/* ─────────────────────────────────────────────
-   responsive.css  –  Media queries / breakpoints
-   Mobile-first com breakpoints bem definidos
-───────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════
+   responsive.css — Mobile-first.
+   Base (sem media query) = mobile, definida em
+   components.css / sections.css. Aqui só progressivamente
+   adicionamos/expandimos layout para telas maiores.
+   Breakpoints: tablet ≥768px · desktop ≥1024px
+══════════════════════════════════════════════════════════ */
 
-/* ──────── Tablet ≥ 768px ──────── */
+
+/* ════════════════════════ TABLET ≥768px ════════════════════════ */
 @media (min-width: 768px) {
 
-  .navbar__hamburger { display: none !important; }
-  .navbar__nav { display: flex !important; }
-  .navbar .btn--primary { display: inline-flex !important; }
+  .hide-mobile { display: inline; }
 
-  .hero__content { max-width: 60vw; }
+  /* Navbar: mostra os links principais, esconde hamburger */
+  .navbar__nav { display: block; }
+  .navbar__hamburger,
+  .navbar__mobile { display: none; }
+  .navbar .btn--primary { display: inline-flex; }
 
-  .demo__wrapper { grid-template-columns: 1fr 1fr; }
-
-  .btn { min-width: 180px; width: auto; }
-}
-
-/* ──────── Desktop ≥ 1024px ──────── */
-@media (min-width: 1024px) {
-
-  .historia__wrapper { grid-template-columns: 1fr auto 1fr; }
-
+  /* Onde Atuamos */
   .cards-grid {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
   }
-}
 
-/* ──────── Mobile < 768px ──────── */
-@media (max-width: 767px) {
+  /* Resultados */
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+  }
 
-  /* Navbar */
-  .navbar__nav,
-  .navbar .btn--primary { display: none; }
-  .navbar__hamburger { display: flex; }
+  /* Parceiros */
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-  /* Hero */
-  .hero__content { max-width: 100%; }
-  .hero__title { font-size: 2.25rem; }
-  .hero__subtitle { font-size: 1.1rem; }
+  /* Exemplos de agentes */
+  .agents-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
 
-  /* Cards */
-  .cards-grid { grid-template-columns: repeat(2, 1fr); }
-
-  /* Demo */
-  .demo__wrapper { grid-template-columns: 1fr; }
-  .demo__media { min-height: 260px; }
-
-  /* Stats */
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .stat__number, .stat__symbol { font-size: 2.5rem; }
-
-  /* Testimonials */
-  .testimonials-grid { grid-template-columns: 1fr; }
-
-  /* História */
-  .historia__wrapper { grid-template-columns: 1fr; }
-  .historia__visual { display: none; }
-
-  /* Botão full em mobile */
-  .btn { min-width: unset; width: 100%; justify-content: center; }
+  /* Nossa História */
+  .history-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
 
   /* Footer */
-  .footer__inner { flex-direction: column; align-items: center; text-align: center; }
-  .footer__social { justify-content: center; }
-  .footer__nav ul { align-items: center; }
-}
-
-/* ──────── Telas pequenas < 480px ──────── */
-@media (max-width: 479px) {
-
-  .cards-grid { grid-template-columns: 1fr; }
-  .stats-grid { grid-template-columns: 1fr 1fr; }
-
-  .form-row { grid-template-columns: 1fr; }
-}
-
-/* ──────── Telas muito largas ≥ 1600px ──────── */
-@media (min-width: 1600px) {
-  :root {
-    --text-hero:    3.5rem;
-    --text-h2:      2.25rem;
-    --text-h3:      1.75rem;
-    --text-body-lg: 1.25rem;
+  .footer__inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
   }
+
+  .footer__nav { min-width: 160px; }
+}
+
+
+/* ════════════════════════ DESKTOP ≥1024px ════════════════════════ */
+@media (min-width: 1024px) {
+
+  /* Hero — texto alinhado à esquerda com gradiente ocupando a tela toda */
+  .hero__content {
+    max-width: 640px;
+  }
+
+  /* Onde Atuamos — mantém 3 colunas, mais respiro */
+  .cards-grid {
+    gap: var(--space-lg);
+  }
+
+  /* Resultados */
+  .stats-grid { gap: var(--space-lg); }
+
+  /* Parceiros */
+  .testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  /* Exemplos de agentes */
+  .agents-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Íris — duas colunas lado a lado */
+  .iris-pratica__grid {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-2xl);
+  }
+
+  .iris-pratica__info,
+  .chat-mock { flex: 1; min-width: 0; }
+
+  /* Nossa História */
+  .history-grid { gap: var(--space-lg); }
+
+  .history-card--active {
+    transform: translateY(-6px);
+  }
+
+  /* CTA Final — duas colunas lado a lado */
+  .cta-final__grid {
+    flex-direction: row;
+    align-items: stretch;
+    gap: var(--space-2xl);
+  }
+
+  .cta-final__visual,
+  .cta-final__panel { flex: 1; min-width: 0; }
+
+  .cta-final__visual { min-height: 100%; }
+}
+
+
+/* ════════════════════════ DESKTOP LARGO ≥1280px ════════════════════════ */
+@media (min-width: 1280px) {
+  .hero__content { max-width: 700px; }
 }
