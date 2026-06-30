@@ -9,12 +9,13 @@ html {
 body {
   font-family: var(--font-base);
   font-size: var(--text-body);
-  color: var(--color-dark);
+  color: var(--color-white);
   background-color: var(--color-bg);
 }
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
+  font-family: var(--font-condensed);
 }
 
 p {
@@ -22,15 +23,15 @@ p {
 }
 
 /* Utilitários de texto */
-.text--dark    { color: var(--color-primary-dark); }
-.text--primary { color: var(--color-primary); }
+.text--dark    { color: var(--color-accent-dark); }
+.text--primary { color: var(--color-accent); }
 .text--accent  { color: var(--color-accent); }
 .text--white   { color: var(--color-white); }
-.text--gray    { color: var(--color-gray); }
+.text--gray    { color: var(--color-text-muted); }
 
 /* Acessibilidade – foco visível */
 :focus-visible {
-  outline: 3px solid var(--color-primary);
+  outline: 3px solid var(--color-accent);
   outline-offset: 3px;
   border-radius: var(--radius-sm);
 }
@@ -41,8 +42,8 @@ p {
   top: -999px;
   left: 1rem;
   z-index: 9999;
-  background: var(--color-primary);
-  color: var(--color-white);
+  background: var(--color-accent);
+  color: var(--color-bg);
   padding: 0.5rem 1rem;
   border-radius: var(--radius-sm);
 }
