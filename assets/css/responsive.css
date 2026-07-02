@@ -115,7 +115,6 @@
   .cta-final__visual { min-height: 100%; }
 }
 
-
 /* ════════════════════════ DESKTOP LARGO ≥1280px ════════════════════════ */
 @media (min-width: 1280px) {
   .hero__content { max-width: 700px; }
